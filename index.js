@@ -1,37 +1,32 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
+import React, { Component } from 'react';
 
-let screenRecorder = NativeModules.KLScreenRecorderNativeWrapper;
+let screenRecorder = NativeModules.KLScreenRecorderNativeWrapper
 
 module.exports = NativeModules.KLScreenRecorderNativeWrapper;
 
-module.exports.requestPermissions = function asyncRequestPermissions(
-    onPickSuccess,
-    onPickError,
-) {
-    invokeNativeRequestPermissions(onPickSuccess, onPickError);
-};
+module.exports.requestPermissions = function asyncRequestPermissions(onPickSuccess, onPickError) {
+    invokeNativeRequestPermissions(onPickSuccess, onPickError)
+}
 
 async function invokeNativeRequestPermissions(onPickSuccess, onPickError) {
     try {
         await screenRecorder.nativeRequestPermissions();
-        onPickSuccess();
+        onPickSuccess()
     } catch (e) {
-        onPickError(e);
+        onPickError(e)
     }
 }
 
-module.exports.startRecording = function asyncStartRecording(
-    onPickSuccess,
-    onPickError,
-) {
-    invokeNativeStartRecording(onPickSuccess, onPickError);
-};
+module.exports.startRecording = function asyncStartRecording(onPickSuccess, onPickError) {
+    invokeNativeStartRecording(onPickSuccess, onPickError)
+}
 
 async function invokeNativeStartRecording(onPickSuccess, onPickError) {
     try {
         await screenRecorder.nativeStartRecording();
-        onPickSuccess();
+        onPickSuccess()
     } catch (e) {
-        onPickError(e);
+        onPickError(e)
     }
 }
